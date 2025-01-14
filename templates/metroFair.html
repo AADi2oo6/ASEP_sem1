@@ -1,0 +1,170 @@
+{% extends "index.html" %}
+{% block title %}Pune Metro Fair{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/css/metroFair.css">
+{% endblock style %}
+
+{% block body %}
+<form method = 'POST'>
+    {% csrf_token %}
+<div class="journey_form ">
+    <div class="row p-3">
+        <div class="col-md-1 col-sm-12 text-center" style=" display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center;">
+           <label for="country" class="form-label">From</label>
+        </div>
+        <div class="col-md-4 col-sm-12">
+                <select name="from" id="from" class="form-select">
+    <option value="-- Select Station --">-- Select Station --</option>
+    <option class = 'pink'value="PCMC">PCMC</option>
+    <option class = 'pink'value="Sant-Tukaram-Nagar">Sant Tukaram Nagar </option>
+    <option class = 'pink'value="Bhosari">Bhosari </option>
+    <option class = 'pink' value="Kasarwadi">Kasarwadi </option>
+    <option class = 'pink'value="Phugewadi">Phugewadi</option>
+    <option class = 'pink'value="Dapodi">Dapodi </option>
+    <option class = 'pink'value="Bopodi">Bopodi </option>
+    <option class = 'pink'value="Shivaji-Nagar">Shivaji Nagar</option>
+    <option class = 'multycolor' value="District-Court">District Court</option>
+    <option class = 'purpal' value="Kasba-Peth-(Budhwar-Peth)">Kasba Peth</option>
+    <option class = 'purpal' value="Mandai">Mandai</option>
+    <option class = 'purpal' value="Swargate">Swargate</option>   
+    <option class = 'blue' value="Vanaz">Vanaz </option>
+    <option class= 'blue' value="Anand-Naga">Anand Nagar</option>
+    <option class = 'blue' value="Ideal-Colony">Ideal Colony </option>
+    <option class = 'blue' value="Nal-Stop">Nal Stop </option>
+    <option class = 'blue' value="Garware-College">Garware College</option>
+    <option class = 'blue' value="Deccan-Gymkhana">Deccan Gymkhana </option>
+    <option class = 'blue' value="Chhatrapati-Sambhaji-Udyan">Chhatrapati Sambhaji Udyan </option>
+    <option class = 'blue' value="PMC">PMC</option>
+    <option class = 'blue' value="Mangalwar Peth">Mangalwar Peth</option>
+    <option class = 'blue' value="Pune Railway Station">Pune Railway Station </option>
+    <option class = 'blue' value="Ruby Hall Clinic">Ruby Hall Clinic</option>
+    <option class = 'blue' value="Bund Garden">Bund Garden</option>
+    <option class = 'blue' value="Yerwada">Yerwada</option>
+    <option class = 'blue' value="Kalyani Nagar<">Kalyani Nagar</option>
+    <option class = 'blue' value="Ramwadi">Ramwadi</option>
+
+</select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+        </div>
+        <div class="col-md-1 col-sm-12 text-center" style=" display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center;">
+           <label for="state" class="form-label" style="float:right;">To</label>
+        </div>
+        <div class="col-md-4 col-sm-4">
+                <select name="to" id="to" class="form-select">
+                    <option value="-- Select Station --">-- Select Station --</option>
+    <option class = 'pink'value="PCMC">PCMC</option>
+    <option class = 'pink'value="Sant-Tukaram-Nagar">Sant Tukaram Nagar </option>
+    <option class = 'pink'value="Bhosari">Bhosari </option>
+    <option class = 'pink' value="Kasarwadi">Kasarwadi </option>
+    <option class = 'pink'value="Phugewadi">Phugewadi</option>
+    <option class = 'pink'value="Dapodi">Dapodi </option>
+    <option class = 'pink'value="Bopodi">Bopodi </option>
+    <option class = 'pink'value="Shivaji-Nagar">Shivaji Nagar</option>
+    <option class = 'multycolor' value="District-Court">District Court</option>
+    <option class = 'purpal' value="Kasba-Peth-(Budhwar-Peth)">Kasba Peth</option>
+    <option class = 'purpal' value="Mandai">Mandai</option>
+    <option class = 'purpal' value="Swargate">Swargate</option>   
+    <option class = 'blue' value="Vanaz">Vanaz </option>
+    <option class= 'blue' value="Anand-Naga">Anand Nagar</option>
+    <option class = 'blue' value="Ideal-Colony">Ideal Colony </option>
+    <option class = 'blue' value="Nal-Stop">Nal Stop </option>
+    <option class = 'blue' value="Garware-College">Garware College</option>
+    <option class = 'blue' value="Deccan-Gymkhana">Deccan Gymkhana </option>
+    <option class = 'blue' value="Chhatrapati-Sambhaji-Udyan">Chhatrapati Sambhaji Udyan </option>
+    <option class = 'blue' value="PMC">PMC</option>
+    <option class = 'blue' value="Mangalwar Peth">Mangalwar Peth</option>
+    <option class = 'blue' value="Pune Railway Station">Pune Railway Station </option>
+    <option class = 'blue' value="Ruby Hall Clinic">Ruby Hall Clinic</option>
+    <option class = 'blue' value="Bund Garden">Bund Garden</option>
+    <option class = 'blue' value="Yerwada">Yerwada</option>
+    <option class = 'blue' value="Kalyani Nagar<">Kalyani Nagar</option>
+    <option class = 'blue' value="Ramwadi">Ramwadi</option>
+
+
+</select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+        </div>
+        <div class="col-md-2 col-sm-12" style=" display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center;">
+            
+             <input type="submit" name="btnShowRoute" value="Know you fare"  id="btnShowRoute" class=" btn btn-primary btn-lg text-center">
+
+        </div>
+    </div><!--row/-->
+    <div class="row station pb-3">
+        <div class="col-md-4">
+            <p style="font-size:18px">From : <span style="font-weight:600">
+                <span id="lblStation">{{mfrom}}</span></span>&nbsp;&nbsp;&nbsp;&nbsp;  to : <span style="font-weight:600"><span id="lblToStation">{{mto}}</span></span></p>
+        </div>
+        <div class="col-md-4">
+            <img src="/static/img/ticket_fare.svg" height="50">&nbsp;&nbsp;Travel Fare :&nbsp;&nbsp;<span style="font-weight:bold; font-size:24px;" class="color_light_purple">{{TOKEN_FARE}}</span>
+        </div>
+    </div><!--row/-->
+    <p>{{remark}}</p>
+</div>
+{% comment %} {% if len({{remark}})>0 %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+<section>
+    <div class="fare-details">
+        <div class="fare-item">
+            <p class="fare-title">TOKEN FARE</p>
+            <p class="fare-value">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Money_Bill">
+                        <path d="M19.44,5.78H4.56a2.507,2.507,0,0,0-2.5,2.5v7.44a2.514,2.514,0,0,0,2.5,2.5H19.44a2.507,2.507,0,0,0,2.5-2.5V8.28A2.5,2.5,0,0,0,19.44,5.78ZM3.06,8.28a1.5,1.5,0,0,1,1.5-1.5H6.04A3.521,3.521,0,0,1,3.06,9.76Zm1.5,8.94a1.511,1.511,0,0,1-1.5-1.5V14.24a3.521,3.521,0,0,1,2.98,2.98Zm16.38-1.5a1.5,1.5,0,0,1-1.5,1.5H17.96a3.521,3.521,0,0,1,2.98-2.98Zm0-2.49a4.528,4.528,0,0,0-3.99,3.99H7.05a4.528,4.528,0,0,0-3.99-3.99V10.77A4.528,4.528,0,0,0,7.05,6.78h9.9a4.528,4.528,0,0,0,3.99,3.99Zm0-3.47a3.521,3.521,0,0,1-2.98-2.98h1.48a1.5,1.5,0,0,1,1.5,1.5Z"></path>
+                        <circle cx="12.002" cy="11.998" r="2"></circle>
+                    </g>
+                </svg>
+                {{TOKEN_FARE}}
+            </p>
+        </div>
+        <div class="fare-item">
+            <p class="fare-title">NUMBER OF INTERCHANGES</p>
+            <p class="fare-value">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"></path>
+                </svg>
+                {{NUMBER_OF_INTERCHANGES}}
+            </p>
+        </div>
+        <div class="fare-item">
+            <p class="fare-title">NUMBER OF STATION</p>
+            <p class="fare-value">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.708 18.099c-.202.152-.44.228-.714.228-.242 0-.471-.076-.688-.228-.218-.152-.327-.373-.327-.66V9.626h-.023l-2.984 6.057a1.453 1.453 0 0 1-.385.505c-.145.112-.337.168-.578.168-.24 0-.433-.056-.577-.168a1.442 1.442 0 0 1-.385-.505L8.063 9.627H8.04v7.811a.748.748 0 0 1-.339.66 1.23 1.23 0 0 1-.7.229c-.275 0-.508-.076-.702-.228-.193-.152-.29-.373-.29-.66V6.958c0-.304.096-.589.29-.853.192-.264.537-.396 1.036-.396.37 0 .655.084.856.252.2.169.38.421.542.757l3.277 6.754h.024l3.253-6.754c.16-.336.342-.588.543-.757.2-.168.485-.252.855-.252.498 0 .844.132 1.036.396.193.265.29.55.29.854v10.478c0 .288-.101.509-.302.66zm-5.732 4.156c5.658 0 10.279-4.64 10.279-10.327 0-5.62-4.603-10.183-10.279-10.183-5.674 0-10.23 4.536-10.23 10.183 0 5.59 4.715 10.327 10.23 10.327zm0 1.745C5.495 24 0 18.48 0 11.928 0 5.315 5.34 0 11.976 0 18.613 0 24 5.34 24 11.928 24 18.577 18.6 24 11.976 24Z"></path>
+                </svg>
+                {{NUMBER_OF_STATION}}
+            </p>
+        </div>
+        <div class="fare-item">
+            <p class="fare-title">METRO GO SMART CARD FARE</p>
+            <p class="fare-value">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Money_Bill">
+                        <path d="M19.44,5.78H4.56a2.507,2.507,0,0,0-2.5,2.5v7.44a2.514,2.514,0,0,0,2.5,2.5H19.44a2.507,2.507,0,0,0,2.5-2.5V8.28A2.5,2.5,0,0,0,19.44,5.78ZM3.06,8.28a1.5,1.5,0,0,1,1.5-1.5H6.04A3.521,3.521,0,0,1,3.06,9.76Zm1.5,8.94a1.511,1.511,0,0,1-1.5-1.5V14.24a3.521,3.521,0,0,1,2.98,2.98Zm16.38-1.5a1.5,1.5,0,0,1-1.5,1.5H17.96a3.521,3.521,0,0,1,2.98-2.98Zm0-2.49a4.528,4.528,0,0,0-3.99,3.99H7.05a4.528,4.528,0,0,0-3.99-3.99V10.77A4.528,4.528,0,0,0,7.05,6.78h9.9a4.528,4.528,0,0,0,3.99,3.99Zm0-3.47a3.521,3.521,0,0,1-2.98-2.98h1.48a1.5,1.5,0,0,1,1.5,1.5Z"></path>
+                        <circle cx="12.002" cy="11.998" r="2"></circle>
+                    </g>
+                </svg>
+                {{METRO_GO_SMART_CARD_FARE}}
+            </p>
+        </div>
+        <div class="fare-item">
+            <p class="fare-title">TRAVEL TIME</p>
+            <p class="fare-value">{{TRAVEL_TIME}}</p>
+        </div>
+        <div class="fare-item">
+            <p class="fare-title">FIRST TRAIN TIMING</p>
+            <p class="fare-value">{{FIRST_TRAIN_TIMING}}</p>
+        </div>
+        <div class="fare-item">
+            <p class="fare-title">LAST TRAIN TIMING</p>
+            <p class="fare-value">{{LAST_TRAIN_TIMING}}</p>
+        </div>
+    </div>
+</section>
+</form>
+{% endblock body %}

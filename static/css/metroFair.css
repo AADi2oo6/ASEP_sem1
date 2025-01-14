@@ -1,0 +1,157 @@
+p {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+.journey_form {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fcfcfc8d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.pink{
+    background-color: rgb(223, 61, 255);
+}
+.purpal{
+    background-color: rgb(154, 96, 255);
+}
+.blue{
+    background-color: aqua;
+}
+.multycolor{
+    background-color: #c13574;
+    
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.col-md-1,
+.col-md-2,
+.col-md-4 {
+    padding: 0 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+
+.form-select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #db3f82;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #c13574;
+}
+
+.invalid-feedback {
+    font-size: 12px;
+    color: red;
+}
+
+/* Fare Display Styles */
+.station {
+    border-top: 1px solid #000000;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.station p {
+    margin: 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.color_light_purple {
+    color: #db3f82;
+    font-weight: bold;
+}
+
+img {
+    vertical-align: middle;
+}
+
+
+
+section {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-color: #f4f4f4; */
+}
+
+.fare-details {
+    width: 90%;
+    max-width: 400px;
+    background: #ffffff9d;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.fare-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #0000008a;
+}
+
+.fare-item:last-child {
+    border-bottom: none;
+}
+
+.fare-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+.fare-value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #003366;
+}
+
+.fare-value svg {
+    font-size: 1.2rem;
+    color: #003366;
+}

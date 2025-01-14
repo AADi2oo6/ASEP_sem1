@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block title %}{{title}}{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/css/destinationCards.css">
+{% endblock style %}
+
+
+{% block body %}
+
+<section>
+    <h2>Destinations</h2>
+  <div class="card_holder">
+
+    
+  {% for i in cardData  %}
+  <article class="card">
+    <img
+      class="card__background"
+      src="/media/{{i.dest_image}}"
+      alt="{{i.dest_desc}}"
+      width="1920"
+      height="2193"
+    />
+    <div class="card__content | flow">
+      <div class="card__content--container | flow">
+        <h2 class="card__title">{{i.dest_name}}</h2>
+        <p class="card__description">
+          {{i.dest_desc}}
+        </p>
+        
+      </div>
+      <button class="card__button">Read more</button>
+    </div>
+  </article>
+  
+  {% endfor %}
+</section>
+{% endblock body %}
