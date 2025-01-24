@@ -28,8 +28,9 @@ urlpatterns = [
     path('', views.index),
     path('metroFair/',views.metroFair),
     path('destinations/',views.dest),
+
     # path('destinations/<destSlug>',views.dest),
-]
+]x``
 
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT )
