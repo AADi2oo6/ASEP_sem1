@@ -4,5 +4,5 @@ from destinations.models import destinations
 # Register your models here.
 
 class destinationsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'dest_name','dest_desc','dest_slug']
+    list_display = ['id', 'dest_name','dest_category','dest_desc',"news_description",'dest_slug']
 admin.site.register(destinations,destinationsAdmin)
