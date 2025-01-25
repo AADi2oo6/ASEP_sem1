@@ -3,7 +3,8 @@ from django.shortcuts import render
 from pycode import metroFairData
 from destinations.models import destinations
 import json
-
+def newIndex(request):
+    return render(request,'Index2.html')
 def index(request):
     # request.method ='the'
     searchdata=[]

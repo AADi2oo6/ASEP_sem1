@@ -28,6 +28,7 @@ urlpatterns = [
     path('', views.index),
     path('metroFair/',views.metroFair),
     path('destinations/',views.dest),
+    path('new/',views.newIndex),
 
     # path('destinations/<destSlug>',views.dest),
 ]
