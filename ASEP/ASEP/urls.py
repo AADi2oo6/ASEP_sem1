@@ -30,7 +30,7 @@ urlpatterns = [
     path('destinations/',views.dest),
     path('new/',views.newIndex),
 
-    # path('destinations/<destSlug>',views.dest),
+    path('destinfo/<destSlug>',views.destinfo),
 ]
 
 if settings.DEBUG:

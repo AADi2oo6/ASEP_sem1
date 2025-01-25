@@ -80,3 +80,13 @@ def dest(reqeust):
     }
 
     return render(reqeust,'destinations.html',data)    
+
+def destinfo(request,destSlug):
+    dataHolder= destinations.objects.filter(dest_slug=destSlug)
+    data = {
+        'cardData':dataHolder,
+    }
+    # for i in dataHolder:
+    #     if i.dest_slug == destSlug:
+    #         data['destData'] = i
+    return render(request,'destinfo.html',data)
