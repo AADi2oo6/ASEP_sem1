@@ -21,24 +21,28 @@ def getMetroData(mfrom="PCMC",mto='Bopadi'):
     driver.get(f'https://www.nearbymetro.com/metro/14/farecalculation/From-{mfrom}/To-{mto}')
 
     # Add an explicit wait
-    element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div/div/div[3]/div[1]/div'))
-    )
+    try:
+        element = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div/div/div[3]/div[1]/div'))
+        )
 
-    # Print the extracted text
-    data = element.text.split('\n')
-    dic = {}
-    try :
-
-        for i in range(0,len(data),2):
-        
+        # Extract and process the text
+        data = element.text.split('\n')
+        dic = {}
+        for i in range(0, len(data), 2):
             t = data[i].split(' ')
             t = '_'.join(t)
-            dic[t]=data[i+1]
-    except:
-        pass
-        # print(f"{}: {}")
+            dic[t] = data[i + 1]
 
-    # Close the driver
-    driver.quit()
+    except Exception as e:
+        print(data)
+        print(dic)
+        print(f"An error occurred: {e}")
+
+
+    finally:
+        # Ensure the driver is closed properly
+        print(dic)
+        driver.quit()
+
     return dic
