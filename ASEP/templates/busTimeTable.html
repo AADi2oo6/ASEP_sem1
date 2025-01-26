@@ -1,0 +1,98 @@
+{% extends "index.html" %}
+{% block title %}
+    TimeTable
+{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="/static/css/metroFair.css">
+
+{% endblock style %}
+
+{% block body %}
+<script>
+    const busSchedules = {
+        "Janata Vasahat Apala Chowk to Shivajinagar": ["8:00AM", "9:30AM", "11:00AM", "12:30PM", "5:00PM", "6:30PM"],
+        "Shivajinagar to Janata Vasahat Apala Chowk": ["8:45AM", "10:15AM", "11:45AM", "4:15PM", "5:45PM", "7:15PM"],
+        "Marketyard to Kasarwadi Station": ["6:35AM", "9:10AM", "3:10PM", "6:05PM"],
+        "Kasarwadi Station to Marketyard": ["7:50AM", "10:35AM", "4:35PM", "7:35PM"]
+    };
+
+    function showDepartureTime() {
+        const from = document.getElementById('from').value;
+        const to = document.getElementById('to').value;
+        const routeKey = `${from} to ${to}`;
+        const resultDiv = document.getElementById('result');
+
+        if (busSchedules[routeKey]) {
+            resultDiv.innerHTML = `<strong>Departure Times:</strong> ${busSchedules[routeKey].join(', ')}`;
+        } else {
+            resultDiv.innerHTML = "{{timing}}";
+        }
+    }
+</script>
+
+<form class="timetable" method="POST">
+    {% csrf_token %}
+ <div class="journey_form ">
+    <div class="row p-3">
+        <div class="col-md-1 col-sm-12 text-center" style=" display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center;">
+           <label for="country" class="form-label">From</label>
+        </div>
+        <div class="col-md-4 col-sm-12">
+                <select name="from" id="from" class="form-select">
+                
+                        <option value="">Select Starting Point</option>
+                        {% for i in timeTable %}
+                        <option value="{{i.FROM}}">{{i.FROM}}</option>
+                        {% endfor %}
+                        {% comment %} <option value="Shivajinagar">Shivajinagar</option>
+                        <option value="Marketyard">Marketyard</option>
+                        <option value="Kasarwadi Station">Kasarwadi Station</option> {% endcomment %}
+                </select>
+
+              <div class="invalid-feedback">
+                Please select a valid location.
+              </div>
+        </div>
+        <div class="col-md-1 col-sm-12 text-center" style=" display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center;">
+           <label for="state" class="form-label" style="float:right;">To</label>
+        </div>
+        <div class="col-md-4 col-sm-4">
+                <select name="to" id="to" class="form-select">
+                    <option value="-- Select Station --">-- Select Bus Depot --</option>
+                    
+                        {% for i in timeTable %}
+                        <option value="{{i.TO}}">{{i.TO}}</option>
+                        {% endfor %}
+                        {% comment %} <option value="Shivajinagar">Shivajinagar</option>
+                        <option value="Marketyard">Marketyard</option>
+                        <option value="Kasarwadi Station">Kasarwadi Station</option> {% endcomment %}
+                </select>
+              <div class="invalid-feedback">
+                Please provide a valid location.
+              </div>
+        </div>
+        <div class="col-md-2 col-sm-12" style=" display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center;">
+            
+             <input type="submit" name="btnShowRoute" value="Get busSchedules"  id="btnShowRoute" class=" btn btn-primary btn-lg text-center">
+
+        </div>
+    </div><!--row/-->
+    <div class="row station pb-3">
+        <div class="col-md-4">
+            <p style="font-size:18px">From : <span style="font-weight:600">
+                <span id="lblStation">{{bfrom}}</span></span>&nbsp;&nbsp;
+                {% load static %}
+                <img src="{% static 'img/bus-13371.png' %}" style="height: 100px; width: 100px;">
+                &nbsp;&nbsp;  to : <span style="font-weight:600"><span id="lblToStation">{{bto}}</span></span></p>
+        </div>
+        
+    </div><!--row/-->
+    <h2>Departure Timings</h2>
+    <div id="result">
+        {{timing}}
+    </div>
+</div>
+    
+</form>
+
+{% endblock body %}

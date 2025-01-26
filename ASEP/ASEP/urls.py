@@ -29,8 +29,9 @@ urlpatterns = [
     path('metroFair/',views.metroFair),
     path('destinations/',views.dest),
     path('new/',views.newIndex),
+    path('timeTable/',views.timeTable),
 
-    # path('destinations/<destSlug>',views.dest),
+    path('destinfo/<destSlug>',views.destinfo),
 ]
 
 if settings.DEBUG:
