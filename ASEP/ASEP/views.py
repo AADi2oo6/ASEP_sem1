@@ -2,6 +2,7 @@ from django.http import HttpResponse , HttpResponseRedirect
 from django.shortcuts import render
 from pycode import metroFairData
 from destinations.models import destinations
+# from ASEP.pycode import TimeTableWriter
 import json
 def newIndex(request):
     return render(request,'Index2.html')
@@ -24,7 +25,7 @@ def index(request):
                 if i.dest_name == place:
                     slug = i.dest_slug
             # return HttpResponse(f"the name of the place is : {place}")
-            return HttpResponseRedirect(f'/destinations/{slug}')
+            return HttpResponseRedirect(f'/destinfo/{slug}')
     except Exception as e:
         print(e)
     
@@ -72,14 +73,33 @@ def metroFair(reqeust):
         return render(reqeust,'metroFair.html',data)
     return render(reqeust,'metroFair.html',data)
 
-def dest(reqeust):
+def dest(request):
+    
+    # dataHolder= destinations.objects.all()
+    searchdata=[]
     dataHolder= destinations.objects.all()
+    for i in dataHolder:
+        searchdata.append(i.dest_name)
+    print(searchdata)
+
+    
+    try: 
+        if request.method == 'POST':
+            search= request.POST.get('search')
+            if search != None:
+                dataHolder=destinations.objects.filter(dest_name__icontains = search)
+            
+            # return HttpResponse(f"the name of the place is : {place}")
+
+    except Exception as e:
+        print(e)
     data = {
         'title':'Destinations',
-        'cardData':dataHolder
+        'cardData':dataHolder,
+        'searchdata':json.dumps(searchdata)
     }
 
-    return render(reqeust,'destinations.html',data)    
+    return render(request,'destinations.html',data)    
 
 def destinfo(request,destSlug):
     dataHolder= destinations.objects.filter(dest_slug=destSlug)
@@ -90,3 +110,37 @@ def destinfo(request,destSlug):
     #     if i.dest_slug == destSlug:
     #         data['destData'] = i
     return render(request,'destinfo.html',data)
+
+
+def timeTable(request):
+    import csv
+    with open(r'C:/Users/adish/Documents/GitHub/ASEP_sem1/ASEP/pycode/timeTable.csv', 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+        l=[]
+        for row in reader:
+            # print(row['FROM'], row['TO'], row['TIMING'])
+            l.append(row)
+        time = 'Not Avilable'
+        bfrom =''
+        bto = ''
+        if request.method == 'POST':
+            fromPlace = request.POST.get('from')
+            toPlace = request.POST.get('to')
+            print(fromPlace,toPlace)
+            for i in l:
+                if i['FROM'] == fromPlace and i['TO'] == toPlace:
+                    print(i['TIMING'])
+                    time=i['TIMING']
+                    bfrom = fromPlace
+                    bto = toPlace
+                    
+
+        data = {
+            'title':'Time Table',
+            'timeTable':l,
+            'timing':time,
+            'bfrom':bfrom,
+            'bto':bto
+        }
+
+        return render(request,'busTimeTable.html',data)

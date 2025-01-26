@@ -1,7 +1,12 @@
-p {
+p .warning {
     text-align: center;
     color: red;
     font-weight: bold;
+}
+.row.station.pb-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .journey_form {
     border: 1px solid #ddd;

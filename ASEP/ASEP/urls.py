@@ -29,6 +29,7 @@ urlpatterns = [
     path('metroFair/',views.metroFair),
     path('destinations/',views.dest),
     path('new/',views.newIndex),
+    path('timeTable/',views.timeTable),
 
     path('destinfo/<destSlug>',views.destinfo),
 ]

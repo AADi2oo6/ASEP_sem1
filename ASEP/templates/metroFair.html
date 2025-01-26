@@ -41,7 +41,7 @@
     <option class = 'blue' value="Ruby-Hall-Clinic">Ruby Hall Clinic</option>
     <option class = 'blue' value="Bund-Garden">Bund Garden</option>
     <option class = 'blue' value="Yerwada">Yerwada</option>
-    <option class = 'blue' value="Kalyani-Nagar<">Kalyani Nagar</option>
+    <option class = 'blue' value="Kalyani-Nagar">Kalyani Nagar</option>
     <option class = 'blue' value="Ramwadi">Ramwadi</option>
 
 </select>
@@ -80,7 +80,7 @@
     <option class = 'blue' value="Ruby-Hall-Clinic">Ruby Hall Clinic</option>
     <option class = 'blue' value="Bund-Garden">Bund Garden</option>
     <option class = 'blue' value="Yerwada">Yerwada</option>
-    <option class = 'blue' value="Kalyani-Nagar<">Kalyani Nagar</option>
+    <option class = 'blue' value="Kalyani-Nagar">Kalyani Nagar</option>
     <option class = 'blue' value="Ramwadi">Ramwadi</option>
 
 
@@ -98,13 +98,16 @@
     <div class="row station pb-3">
         <div class="col-md-4">
             <p style="font-size:18px">From : <span style="font-weight:600">
-                <span id="lblStation">{{mfrom}}</span></span>&nbsp;&nbsp;&nbsp;&nbsp;  to : <span style="font-weight:600"><span id="lblToStation">{{mto}}</span></span></p>
+                <span id="lblStation">{{mfrom}}</span></span>&nbsp;&nbsp;
+                {% load static %}
+                <img src="{% static 'img/metro.png' %}" style="height: 100px; width: 100px;">
+                &nbsp;&nbsp;  to : <span style="font-weight:600"><span id="lblToStation">{{mto}}</span></span></p>
         </div>
         <div class="col-md-4">
             <img src="/static/img/ticket_fare.svg" height="50">&nbsp;&nbsp;Travel Fare :&nbsp;&nbsp;<span style="font-weight:bold; font-size:24px;" class="color_light_purple">{{TOKEN_FARE}}</span>
         </div>
     </div><!--row/-->
-    <p>{{remark}}</p>
+    <p class = 'warning'>{{remark}}</p>
 </div>
 {% comment %} {% if len({{remark}})>0 %} {% endcomment %}
 {% comment %} {% endif %} {% endcomment %}
