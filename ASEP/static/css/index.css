@@ -58,18 +58,20 @@ nav ul li a:hover {
 .search-bar {
     padding: 10px; /* Padding for the search input */
     border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
-    width: 300px; /* Width of the search bar */
+    border-radius: 0; /* Sharp corners */
+    width: 500px; /* Increased width of the search bar */
+    font-weight: bold; /* Increased thickness */
 }
 
 .search-button {
     padding: 10px 16px; /* Padding for the search button */
     border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 0; /* Sharp corners */
     background-color: #000000ce; /* Button color */
     color: rgb(255, 255, 255); /* Button text color */
     cursor: pointer; /* Pointer cursor on hover */
     margin-left: 5px; /* Space between input and button */
+    font-weight: bold; /* Increased thickness */
 }
 
 .search-button:hover {

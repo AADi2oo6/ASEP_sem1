@@ -32,6 +32,7 @@ urlpatterns = [
     path('timeTable/',views.timeTable),
 
     path('destinfo/<destSlug>',views.destinfo),
+    path('emergency/',views.emergency),
 ]
 
 if settings.DEBUG:

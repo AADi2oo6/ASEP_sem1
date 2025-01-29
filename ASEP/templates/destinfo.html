@@ -9,14 +9,39 @@
 <link rel="stylesheet" href="/static/css/destinationsInfo.css">
 <style>
     #map {
-        height: 500px; /* Set the height of the map */
-        width: 100%;   /* Set the map to take full width */
+        width: 100%;
+        height: 400px; /* Adjust height as needed */
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        margin: 20px 0;
     }
-    #distance {
-        margin-top: 10px;
+    
+    /* Style for the distance display */
+    .destinations {
         font-size: 18px;
         font-weight: bold;
+        color: #333;
+        text-align: center;
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     }
+    
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        #map {
+            height: 300px;
+        }
+    
+        .destinations {
+            font-size: 16px;
+            padding: 8px;
+        }
+    }
+  
     .checkbox:checked + label,
     .checkbox:not(:checked) + label{
         background-image: url('/media/{{cardData.0.dest_image1}}');
@@ -47,6 +72,7 @@
 {% endblock style %}
 
 {% block body %}
+<section class = "container">
 <h1 class= 'head'> {{ cardData.0.dest_name }}</h1>
 
 <div class = 'new'> 
@@ -75,15 +101,15 @@
                           </ul>
                       </div>
 </div>	
-<div class="destination-info">
-    <h2>Destination Information</h2>
-    <p><strong>Name:</strong> {{ cardData.0.dest_name }}</p>
-    <p><strong>Description:</strong> {{ cardData.0.description }}</p>
-    <p><strong>Location:</strong> {{ cardData.0.location }}</p>
-    <p><strong>Category:</strong> {{ cardData.0.category }}</p>
+<section class = 'info'>
+<div class="row">
+    <div class="card">
+        <p> {{cardData.0.news_description| safe}}</p>
+    </div>
 </div>
+</section>
 <h1 class= 'head'> direction to {{ cardData.0.dest_name }}</h1>
-<div id="map"></div>
+<div id="map" class = 'map'></div>
     <div class = 'destinations' id="distance">Calculating distance...</div>
                 
                     <!-- Google Maps JavaScript API -->
@@ -194,6 +220,7 @@
         </script>
 
 
-{% endblock body %}
+    </section>
+        {% endblock body %}
 
 

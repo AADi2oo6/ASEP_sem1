@@ -19,3 +19,10 @@ class destinations(models.Model):
     dest_slug = AutoSlugField(populate_from ="dest_name", unique = True, null = True,default = None)
 
 
+class emergincy(models.Model):
+    catagory=models.CharField(max_length=100)
+    phone=models.CharField(max_length=100)
+    email=models.EmailField()
+    address=models.TextField()
+    area = models.CharField(max_length=100)
+    location = models.URLField()

@@ -1,0 +1,82 @@
+.emergency-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.Ecard {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.Elogo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.Etitle {
+  font-size: 1.5em;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1em;
+  color: #333;
+}
+
+.details {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.hidden {
+  display: none;
+}
+
+.expanded {
+  padding-bottom: 30px;
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  color: white;
+  margin: 5px;
+}
+
+.btn-blue {
+  background-color: #007bff;
+}
+
+.btn-blue:hover {
+  background-color: #0056b3;
+}
+
+.btn-green {
+  background-color: #28a745;
+}
+
+.btn-green:hover {
+  background-color: #1e7e34;
+}
+

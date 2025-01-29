@@ -1,5 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+.container {
+  background-color: rgba(255, 255, 255, 0.8); /* Blur white background */
+  margin: 20px; /* Margin from all sides */
+  padding: 20px; /* Padding inside the container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
 h1.head {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5); /* Translucent background color */
@@ -165,4 +172,64 @@ ul.col li.list span {
     opacity: 1;
     pointer-events: auto;
     border-radius: 16px;
+}
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+
+* .info{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.info{
+  /* background-color: #343a40; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 1h;
+  user-select: none;
+}
+
+.card {
+  border-radius: 10px;
+  filter: drop-shadow(0 5px 10px 0 #ffffff);
+  width: 1000px;
+  height: 230px;
+  background-color: #ffffff;
+  padding: 20px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  transition: 0.6s ease-in;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -15px;
+  right: -15px;
+  background: #7952b3;
+  height: 255px;
+  width: 52px;
+  border-radius: 32px;
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.25s ease-out;
+}
+
+.card:hover::before{
+    transition-delay:0.2s ;
+
+  transform: scale(40);
+}
+
+.card:hover{
+    color: #ffffff;
+
+}
+
+.card p{
+    padding: 10px 0;
 }

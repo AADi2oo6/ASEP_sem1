@@ -1,7 +1,7 @@
 from django.http import HttpResponse , HttpResponseRedirect
 from django.shortcuts import render
 from pycode import metroFairData
-from destinations.models import destinations
+from destinations.models import destinations, emergincy
 # from ASEP.pycode import TimeTableWriter
 import json
 def newIndex(request):
@@ -117,9 +117,10 @@ def timeTable(request):
     with open(r'C:/Users/adish/Documents/GitHub/ASEP_sem1/ASEP/pycode/timeTable.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         l=[]
-        for row in reader:
+        for row in reader :
+            if row not in l:
             # print(row['FROM'], row['TO'], row['TIMING'])
-            l.append(row)
+                l.append(row)
         time = 'Not Avilable'
         bfrom =''
         bto = ''
@@ -128,12 +129,16 @@ def timeTable(request):
             toPlace = request.POST.get('to')
             print(fromPlace,toPlace)
             for i in l:
-                if i['FROM'] == fromPlace and i['TO'] == toPlace:
+                # if i['FROM'].strip() == fromPlace and i['TO'].strip() == toPlace:
+                bfrom = fromPlace
+                bto = toPlace
+                if fromPlace in i['FROM'] and  toPlace in i['TO'].strip():
                     print(i['TIMING'])
                     time=i['TIMING']
                     bfrom = fromPlace
                     bto = toPlace
                     
+
 
         data = {
             'title':'Time Table',
@@ -144,3 +149,10 @@ def timeTable(request):
         }
 
         return render(request,'busTimeTable.html',data)
+    
+def emergency(request):
+    dataHoldere = emergincy.objects.all()
+    data = {
+        'cardData':dataHoldere
+    }
+    return render(request,'emergency.html',data)
