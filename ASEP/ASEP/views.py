@@ -2,6 +2,7 @@ from django.http import HttpResponse , HttpResponseRedirect
 from django.shortcuts import render
 from pycode import metroFairData
 from destinations.models import destinations, emergincy
+from django.db.models import Q
 # from ASEP.pycode import TimeTableWriter
 import json
 def newIndex(request):
@@ -86,10 +87,15 @@ def dest(request):
     try: 
         if request.method == 'POST':
             search= request.POST.get('search')
-            if search != None:
-                dataHolder=destinations.objects.filter(dest_name__icontains = search)
+            filter1 = request.POST.get('filter1')
+            print(len(search),filter1,'---------------')
+            if search != '':
+                dataHolder=destinations.objects.filter(Q(dest_name__icontains = search) | Q(dest_category = filter1))
+            if search =='':
+                dataHolder=destinations.objects.filter(dest_category = filter1)
+                
             
-            # return HttpResponse(f"the name of the place is : {place}")
+            # return HttpResponse(f"the name of the place is : {place}" )
 
     except Exception as e:
         print(e)
@@ -151,8 +157,24 @@ def timeTable(request):
         return render(request,'busTimeTable.html',data)
     
 def emergency(request):
-    dataHoldere = emergincy.objects.all()
+    # request.method = 'GET'
+    searchdata=set()
+    dataHoldere= emergincy.objects.all()
+    for i in dataHoldere:
+        if i not in searchdata:
+            searchdata.add(i.area)
+    print(searchdata,request.method)
+
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        filter1 = request.GET.get('filter')
+        print(search,filter1,'---------------')
+        if search != None :
+            dataHoldere = emergincy.objects.filter(Q(area=search) | Q(catagory=filter1))
+
+    # dataHoldere = emergincy.objects.all()
     data = {
-        'cardData':dataHoldere
+        'cardData':dataHoldere,
+        'searchdata':json.dumps(list(searchdata))
     }
     return render(request,'emergency.html',data)

@@ -15,9 +15,22 @@
     
       <form method = 'POST'>
           {% csrf_token %}
-      <input type="text" placeholder="Search..." class="search-bar" id="search-bar" name = 'search'>
-      <button class="search-button" type="submit" value="submit" >Search</button>
-      <div id="suggestions" class="suggestions"></div> <!-- Suggestions box -->
+      <!-- Search Bar -->
+      <input type="text" placeholder="Search..." class="search-bar" id="search-bar" name="search">
+        
+      <!-- Filter Dropdown -->
+      <select class="search-filter" id="filter1" name="filter1">
+          <option value="all">All</option>
+          <option value="temple">Temple</option>
+          <option value="travel">Travel</option>
+          <option value="food">Food</option>
+      </select>
+
+      <!-- Search Button -->
+      <button class="search-button" type="submit" value="submit">Search</button>
+
+      <!-- Suggestions Box -->
+      <div id="suggestions" class="suggestions"></div>
   </form>
   </div>
   <div class="card_holder">

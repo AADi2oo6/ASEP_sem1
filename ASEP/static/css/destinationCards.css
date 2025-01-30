@@ -212,3 +212,9 @@ p {
     transition-delay: 500ms;
   }
 }
+.search-filter {
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background: white;
+}

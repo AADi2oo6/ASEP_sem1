@@ -4,7 +4,7 @@
   gap: 20px;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 60vh;
   font-family: Arial, sans-serif;
   padding: 20px;
 }
@@ -80,3 +80,9 @@
   background-color: #1e7e34;
 }
 
+.search-filter {
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background: white;
+}
