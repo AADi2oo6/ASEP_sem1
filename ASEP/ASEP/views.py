@@ -120,7 +120,10 @@ def destinfo(request,destSlug):
 
 def timeTable(request):
     import csv
-    with open(r'C:/Users/adish/Documents/GitHub/ASEP_sem1/ASEP/pycode/timeTable.csv', 'r') as csvfile:
+    import os
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file_path = os.path.join(base_dir, 'pycode', 'timeTable.csv')
+    with open(file_path, 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         l=[]
         for row in reader :
