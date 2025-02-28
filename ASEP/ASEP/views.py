@@ -14,6 +14,7 @@ for i in dataHolder:
 def newIndex(request):
     return render(request,'Index2.html')
 def index(request):
+    global dataHolder
     data = {
         'searchdata':json.dumps(searchdata)
     }
@@ -72,6 +73,7 @@ def metroFair(reqeust):
     return render(reqeust,'metroFair.html',data)
 
 def dest(request):
+    global dataHolder
     try: 
         if request.method == 'POST':
             search= request.POST.get('search')
