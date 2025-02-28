@@ -174,3 +174,6 @@ def emergency(request):
         'searchdata':json.dumps(list(searchdata))
     }
     return render(request,'emergency.html',data)
+
+def contact(request):
+    return render(request,'contact.html')

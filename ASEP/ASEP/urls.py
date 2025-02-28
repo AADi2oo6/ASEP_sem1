@@ -33,6 +33,7 @@ urlpatterns = [
 
     path('destinfo/<destSlug>',views.destinfo),
     path('emergency/',views.emergency),
+    path("contact/",views.contact),
 ]
 
 if settings.DEBUG:
