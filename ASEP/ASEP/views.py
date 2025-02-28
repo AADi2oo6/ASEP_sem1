@@ -1,30 +1,30 @@
-from django.http import HttpResponse , HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from pycode import metroFairData
 from destinations.models import destinations, emergincy
 from django.db.models import Q
-# from ASEP.pycode import TimeTableWriter
 import json
+
+searchdata=[]
+dataHolder= destinations.objects.all()
+for i in dataHolder:
+    searchdata.append(i.dest_name)
+
+
 def newIndex(request):
     return render(request,'Index2.html')
 def index(request):
-    # request.method ='the'
-    searchdata=[]
-    dataHolder= destinations.objects.all()
-    for i in dataHolder:
-        searchdata.append(i.dest_name)
     data = {
         'searchdata':json.dumps(searchdata)
     }
-    print(searchdata)
-
-    
     try: 
         if request.method == 'POST':
             place= request.POST.get('search')
             for i in dataHolder :
                 if i.dest_name == place:
                     slug = i.dest_slug
+                else:
+                    return render(request, 'destNotFound.html')
             # return HttpResponse(f"the name of the place is : {place}")
             return HttpResponseRedirect(f'/destinfo/{slug}')
     except Exception as e:
@@ -69,34 +69,21 @@ def metroFair(reqeust):
         except Exception as e :
             print(e)
 
-
-        # reqeust.method = 'NONE'
-        return render(reqeust,'metroFair.html',data)
     return render(reqeust,'metroFair.html',data)
 
 def dest(request):
-    
-    # dataHolder= destinations.objects.all()
-    searchdata=[]
-    dataHolder= destinations.objects.all()
-    for i in dataHolder:
-        searchdata.append(i.dest_name)
-    print(searchdata)
-
-    
     try: 
         if request.method == 'POST':
             search= request.POST.get('search')
             filter1 = request.POST.get('filter1')
             print(len(search),filter1,'---------------')
             if search != '':
-                dataHolder=destinations.objects.filter(Q(dest_name__icontains = search) | Q(dest_category = filter1))
-            if search =='':
-                dataHolder=destinations.objects.filter(dest_category = filter1)
+                dataHolder=destinations.objects.filter(dest_name__icontains = search)
+            elif filter1 == 'All':
+                dataHolder = destinations.objects.all()
+            elif search =='':
+                dataHolder=destinations.objects.filter(dest_category = filter1.lower())
                 
-            
-            # return HttpResponse(f"the name of the place is : {place}" )
-
     except Exception as e:
         print(e)
     data = {
@@ -172,8 +159,12 @@ def emergency(request):
         search = request.GET.get('search')
         filter1 = request.GET.get('filter')
         print(search,filter1,'---------------')
-        if search != None :
+        if filter1 == 'None':
+            dataHoldere = emergincy.objects.all()
+        elif search != None :
             dataHoldere = emergincy.objects.filter(Q(area=search) | Q(catagory=filter1))
+        # else:
+        #     dataHoldere = emergincy.objects.filter(catagory=filter1)
 
     # dataHoldere = emergincy.objects.all()
     data = {
