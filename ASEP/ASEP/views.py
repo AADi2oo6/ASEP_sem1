@@ -161,10 +161,10 @@ def emergency(request):
         search = request.GET.get('search')
         filter1 = request.GET.get('filter')
         print(search,filter1,'---------------')
-        if filter1 == 'None':
-            dataHoldere = emergincy.objects.all()
-        elif search != None :
+        if search != None :
             dataHoldere = emergincy.objects.filter(Q(area=search) | Q(catagory=filter1))
+        elif filter1 == 'None':
+            dataHoldere = emergincy.objects.all()
         # else:
         #     dataHoldere = emergincy.objects.filter(catagory=filter1)
 
