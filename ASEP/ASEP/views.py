@@ -117,6 +117,7 @@ def timeTable(request):
         l=[]
         for row in reader :
             if row not in l:
+                print(row)
             # print(row['FROM'], row['TO'], row['TIMING'])
                 l.append(row)
         time = 'Not Avilable'
@@ -128,16 +129,20 @@ def timeTable(request):
             print(fromPlace,toPlace)
             for i in l:
                 # if i['FROM'].strip() == fromPlace and i['TO'].strip() == toPlace:
-                bfrom = fromPlace
-                bto = toPlace
-                if fromPlace in i['FROM'] and  toPlace in i['TO'].strip():
+                bfrom = fromPlace.strip().upper()
+                bto = toPlace.strip().upper()
+                # d = {'FROM':fromPlace, 'TO': toPlace}
+                # if d in i:
+                #     print(i['TIMING']+"++++++++++++++++++++++++")
+                #     time=i['TIMING']
+                #     bfrom = fromPlace
+                #     bto = toPlace
+
+                if fromPlace in i['FROM'] and  toPlace in i['TO']:
                     print(i['TIMING'])
                     time=i['TIMING']
                     bfrom = fromPlace
                     bto = toPlace
-                    
-
-
         data = {
             'title':'Time Table',
             'timeTable':l,

@@ -22,9 +22,6 @@ def getMetroData(mfrom="PCMC", mto='Bopadi'):
         # Open the website
         driver.get(f'https://www.nearbymetro.com/metro/14/farecalculation/From-{mfrom}/To-{mto}')
 
-        # Wait for page to load completely
-        time.sleep(3)  # Small delay to allow full data loading
-
         # Wait for the element to be visible (not just present)
         element = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div/div/div[3]/div[1]/div'))
